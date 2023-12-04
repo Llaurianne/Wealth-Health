@@ -1,10 +1,8 @@
-/*import userReducer from '../features/user'
-import editModeReducer from '../features/editMode'*/
 import { configureStore } from '@reduxjs/toolkit'
+import employeesReducer from '../features/employeesSlice'
 
 export default configureStore({
 	reducer: {
-		/*user: userReducer,
-		editMode: editModeReducer,*/
+		employees: employeesReducer,
 	},
 })

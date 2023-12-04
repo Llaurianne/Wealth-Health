@@ -1,14 +1,16 @@
-import styled from "styled-components"
+import '../utils/modal.css'
 
-const StyledP = styled.p`
-    width: 50vw;
-    height: 50vw;
-    background: blue;
-`
-
-function Modal() {
+function Modal({openModal, setOpenModal, text}) {
+    
     return (
-        <StyledP>Test modale</StyledP>
+        <>
+        {openModal ? 
+            (<div className='modal'>
+                <p>{text}</p>
+                <button onClick={() => setOpenModal(false)}>X</button>
+            </div>)
+        : null}
+        </>
     )
 }
 

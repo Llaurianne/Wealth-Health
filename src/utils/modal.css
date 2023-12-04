@@ -1,0 +1,29 @@
+.modal {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000050;
+    padding: 40vh 35vw;
+    
+}
+
+.modal p {
+    display: table-cell;
+    width: 30vw;
+    height: 20vh;
+    background-color: white;
+    border-radius: 0.3vw;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.modal button {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 2vw;
+    position: relative;
+    bottom: calc(20vh);
+    left: calc(29vw);
+    border: grey 2px solid;
+}

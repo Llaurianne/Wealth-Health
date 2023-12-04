@@ -1,6 +1,8 @@
 
+import { useSelector} from 'react-redux'
+import { employeesList } from '../features/employeesSlice'
 import styled from 'styled-components'
-import { DataGrid, GridRowsProp, GridColDef, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const TableContainer = styled.div`
     width: 70vw;
@@ -14,7 +16,7 @@ const StyledH1 = styled.h1`
 	margin: 0 auto;
     padding: 4vw;
     text-align: center;
-    background-image: linear-gradient(135deg, #5FB8DC 0%, #2D86AA 100%);
+    background-image: linear-gradient(135deg, #93AD18 0%, #5A6F07 100%);
     color: white;
 `
 
@@ -22,25 +24,21 @@ const StyledDiv = styled.div`
 	margin: 2vw;
 `
 
-
-const rows: GridRowsProp = [
-    { id: 1, col1: 'Hello', col2: 'World' },
-    { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
-    { id: 3, col1: 'MUI', col2: 'is Amazing' },
-    { id: 4, col1: 'Hello', col2: 'World' },
-    { id: 5, col1: 'DataGridPro', col2: 'is Awesome' },
-    { id: 6, col1: 'MUI', col2: 'is Amazing' },
-    { id: 7, col1: 'Hello', col2: 'World' },
-    { id: 8, col1: 'DataGridPro', col2: 'is Awesome' },
-    { id: 9, col1: 'MUI', col2: 'is Amazing' },
-  ];
-  
-  const columns: GridColDef[] = [
-    { field: 'col1', headerName: 'Column 1', headerClassName: 'tableHeader', flex: 1 },
-    { field: 'col2', headerName: 'Column 2', headerClassName: 'tableHeader', flex: 1},
-  ];
-
 export default function Table() {
+    const rows = useSelector(employeesList)
+  
+    const columns = [
+        { field: 'col1', headerName: 'First Name', headerClassName: 'tableHeader', flex: 1 },
+        { field: 'col2', headerName: 'Last Name', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col3', headerName: 'Start Date', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col4', headerName: 'Department', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col5', headerName: 'Date of Birth', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col6', headerName: 'Street', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col7', headerName: 'City', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col8', headerName: 'State', headerClassName: 'tableHeader', flex: 1},
+        { field: 'col9', headerName: 'Zip Code', headerClassName: 'tableHeader', flex: 1},
+    ];
+
     return (
         <TableContainer>
             <StyledH1>Current Employees</StyledH1>

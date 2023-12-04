@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import play from '../assets/play-solid.svg'
 
 const SideContainer = styled.div`
@@ -8,7 +8,7 @@ const SideContainer = styled.div`
 	width : 20vw;
     background-color: #EEEFEF;
     height: 100vh;
-    padding: 10vh 5vw;
+    padding: 10vh 1vw;
 	text-align: center;
 	& div {
 		margin: auto;

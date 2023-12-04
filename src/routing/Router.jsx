@@ -11,6 +11,10 @@ const router = createBrowserRouter([
 		errorElement: <Error />,
 		children: [
 			{
+				path: '/',
+				element: <CreateEmployee />,
+			},
+			{
 				path: 'new',
 				element: <CreateEmployee />,
 			},
