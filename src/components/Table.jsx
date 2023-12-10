@@ -12,6 +12,10 @@ const TableContainer = styled.div`
     background: white;
     border-radius: 0.3vw;
     box-shadow: 0 0 5px grey;
+    @media (max-width: 768px) {
+      margin-top: 20vh;
+      width: 80vw;
+    }
 `
 const StyledH1 = styled.h1`
 	margin: 0 auto;
@@ -26,13 +30,14 @@ const StyledDiv = styled.div`
 
 export default function Table() {
   const data = useSelector(employeesList)
+
   const columns = useMemo(
     () => [
       { header: 'Firstname', accessorKey: 'firstname' },
       { header: 'Lastname', accessorKey: 'lastname' },
-      { header: 'Start Date', accessorKey: 'start' },
+      { header: 'Start Date', accessorKey: 'start', sortingFn: 'dateFn' },
       { header: 'Department', accessorKey: 'department' },
-      { header: 'Date of Birth', accessorKey: 'birth' },
+      { header: 'Date of Birth', accessorKey: 'birth', sortingFn: 'dateFn' },
       { header: 'Street', accessorKey: 'street' },
       { header: 'City', accessorKey: 'city' },
       { header: 'State', accessorKey: 'state' },
@@ -41,10 +46,15 @@ export default function Table() {
     ],
     [],
   );
+  
+  function formatDate(string) {
+    return Date.parse(string.substr(6,4)+'-'+string.substr(0,2)+'-'+string.substr(3,2))
+  }
 
   const table = useMaterialReactTable({ 
     columns, 
     data,
+    sortingFns: { dateFn: (rowA, rowB, columnId) => (formatDate(rowB.original[columnId])-formatDate(rowA.original[columnId]))},
     enableColumnActions: false,
     enableColumnFilters: false,
     enableFullScreenToggle: false,

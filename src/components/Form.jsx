@@ -7,13 +7,17 @@ import styled from 'styled-components'
 import {states, departments} from '../utils/lists'
 
 const FormContainer = styled.form`
-	width: 40vw;
+	width: 60vw;
     margin: 10vh auto;
     padding-bottom: 4vh;
     border-radius: 0.3vw;
     box-shadow: 0 0 5px grey;
     & > div {
         margin: 0 4vw;
+    }
+    @media (max-width: 768px) {
+        margin-top: 20vh;
+        width: 80vw;
     }
 `
 
@@ -129,7 +133,6 @@ function Form({setOpenModal}) {
 	return (
 		<FormContainer onSubmit={submit}>
             <StyledH1>Create Employee</StyledH1>
-            
             <div>
                 <StyledLabel>First Name
                     <input 

@@ -11,6 +11,12 @@ const SideContainer = styled.div`
 	& div {
 		margin: auto;
 		width: fit-content;
+		@media (max-width: 768px) {
+			margin:0;
+			display: flex;
+			flex: 1;
+			justify-content: space-evenly;
+		}
 	}
 	& a {
 		display: block;
@@ -20,11 +26,23 @@ const SideContainer = styled.div`
 			font-weight: bold;
 		}
 	}
+	@media (max-width: 768px) {
+		width: 100vw;
+		height: 10vh;
+		display: flex;
+		flex-wrap: wrap;
+		padding-top: 5vh;
+	}
 `
 
 const StyledP = styled.p`
-	font-size: 1.5vw;
-	margin-bottom: 10vh
+	margin-bottom: 10vh;
+	font: bold;
+	font-size: 1.5em;
+	@media (max-width: 768px) {
+		margin-bottom: 2vh;
+		width: 100vw;
+	}
 `
 
 function SidePanel() {
