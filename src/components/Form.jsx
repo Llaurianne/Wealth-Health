@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { create, employeesList } from '../features/employeesSlice'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Select from 'react-select'
 import styled from 'styled-components'
-import mock from '../utils/mock'
+import {states, departments} from '../utils/lists'
 
 const FormContainer = styled.form`
 	width: 40vw;
@@ -19,10 +19,9 @@ const FormContainer = styled.form`
 
 const StyledH1 = styled.h1`
 	margin: 0 auto 2vw auto;
-    padding: 4vw;
+    padding: 2vw 4vw;
     text-align: center;
-    background-image: linear-gradient(135deg, #93AD18 0%, #5A6F07 100%);
-    color: white;
+    color: #93AD18;
 `
 
 const StyledFieldset = styled.fieldset`
@@ -54,30 +53,28 @@ const StyledLegend = styled.legend`
     padding: 0 2vw;
 `
 
-const statesList = mock.states.map(s => ({value: s.name, label: s.name}))
-const departmentsList = mock.departments.map(d => ({value: d, label: d}))
+const statesList = states.map(s => ({value: s.name, label: s.name}))
+const departmentsList = departments.map(d => ({value: d, label: d}))
 
 function Form({setOpenModal}) {
     const dispatch = useDispatch()
     const list = useSelector(employeesList)
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [startDate, setStartDate] = useState(null);
-    const [birthDate, setBirthDate] = useState(null);
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [start, setStart] = useState(null);
+    const [birth, setBirth] = useState(null);
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState(null);
     const [zip, setZip] = useState('');
     const [department, setDepartment] = useState(null);
 
-    
-    
     function initializeEmployee() {
-        setFirstName('')
-        setLastName('')
-        setStartDate(null)
-        setBirthDate(null)
+        setFirstname('')
+        setLastname('')
+        setStart(null)
+        setBirth(null)
         setStreet('')
         setCity('')
         setState(null)
@@ -87,35 +84,46 @@ function Form({setOpenModal}) {
 
     function submit(e) {
         e.preventDefault()
-        let stateValue
-        let dptValue
+        let newState
+        let newDpt
+        let newStart
+        let newBirth
         if (!state) {
-            stateValue = ''
+            newState = ''
         } else {
-            stateValue = state.value
+            newState = state.value
         }
         if (!department) {
-            dptValue = ''
+            newDpt = ''
         } else {
-            dptValue = department.value
+            newDpt = department.value
+        }
+        if (!start) {
+            newStart = ''
+        } else {
+            newStart = start
+        }
+        if (!birth) {
+            newBirth = ''
+        } else {
+            newBirth = birth
         }
         let newEmployee = 
             { 
-                id: list.length + 1, 
-                col1: firstName, 
-                col2: lastName ,
-                col3: startDate, 
-                col4: dptValue ,
-                col5: birthDate, 
-                col6: street ,
-                col7: city, 
-                col8: stateValue ,
-                col9: zip
+                id: list.length.toString(),
+                firstname, 
+                lastname ,
+                start: newStart, 
+                department: newDpt ,
+                birth: newBirth, 
+                street ,
+                city, 
+                state: newState,
+                zip
             }
         dispatch(create(newEmployee))
         setOpenModal(true)
         initializeEmployee()
-        console.log(newEmployee)
     }
 
 	return (
@@ -126,29 +134,29 @@ function Form({setOpenModal}) {
                 <StyledLabel>First Name
                     <input 
                         type="text" 
-                        name="firstName"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        name="firstname"
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
                     />
                 </StyledLabel>
                 <StyledLabel>Last Name
                     <input 
                         type="text"
-                        name="lastName"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        name="lastname"
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
                     />
                 </StyledLabel>
                 <StyledLabel>Date of birth
                     <DatePicker 
-                        value={birthDate}
-                        onChange={(newValue) => setBirthDate(newValue.format('MM/DD/YYYY'))}
+                        value={birth}
+                        onChange={(newValue) => setBirth(newValue.format('MM/DD/YYYY'))}
                     />
                 </StyledLabel>
                 <StyledLabel>Start Date
                     <DatePicker 
-                        value={startDate} 
-                        onChange={(newValue) => setStartDate(newValue.format('MM/DD/YYYY'))}
+                        value={start} 
+                        onChange={(newValue) => setStart(newValue.format('MM/DD/YYYY'))}
                     />
                 </StyledLabel>
             </div>
@@ -175,7 +183,7 @@ function Form({setOpenModal}) {
                         placeholder="Choose a state"
                         options={statesList}
                         value={state}
-                        onChange={(newValue) => setState(newValue)}
+                        onChange={setState}
                     />
                 </StyledLabel>
                 <StyledLabel>Zip Code
@@ -193,7 +201,7 @@ function Form({setOpenModal}) {
                         placeholder="Choose a department"
                         options={departmentsList}
                         value={department}
-                        onChange={(newValue) => setDepartment(newValue)}
+                        onChange={setDepartment}
                     />
                 </StyledLabel> 
             </div>

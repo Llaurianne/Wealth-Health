@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter} from 'react-router-dom'
 import Root from '../pages/Root'
 import CreateEmployee from '../pages/CreateEmployee'
 import CurrentEmployees from '../pages/CurrentEmployees'
@@ -12,10 +12,6 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <CreateEmployee />,
-			},
-			{
-				path: 'new',
 				element: <CreateEmployee />,
 			},
 			{

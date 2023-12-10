@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import mock from '../utils/mock'
 
-const initialState = []
+const initialState = mock
 
 const employeesSlice = createSlice({
 	name: 'employees',
 	initialState,
 	reducers: {
 		create: (state, action) => {
-			state.push(action.payload)
+			state.unshift(action.payload)
 		},
 	},
 })
