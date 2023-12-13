@@ -1,4 +1,4 @@
-const states = [
+export const states = [
 	{
 		name: 'Alabama',
 		abbreviation: 'AL',
@@ -236,15 +236,10 @@ const states = [
 		abbreviation: 'WY',
 	},
 ]
-const departments = [
+export const departments = [
 	'Sales',
 	'Marketing',
 	'Engineering',
 	'Human Resources',
 	'Legal',
 ]
-
-module.exports = {
-	states,
-	departments,
-}

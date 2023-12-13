@@ -8,6 +8,7 @@ import {states, departments} from '../utils/lists'
 
 const FormContainer = styled.form`
 	width: 60vw;
+    max-width: 600px;
     margin: 10vh auto;
     padding-bottom: 4vh;
     border-radius: 0.3vw;
@@ -19,13 +20,6 @@ const FormContainer = styled.form`
         margin-top: 20vh;
         width: 80vw;
     }
-`
-
-const StyledH1 = styled.h1`
-	margin: 0 auto 2vw auto;
-    padding: 2vw 4vw;
-    text-align: center;
-    color: #93AD18;
 `
 
 const StyledFieldset = styled.fieldset`
@@ -132,7 +126,7 @@ function Form({setOpenModal}) {
 
 	return (
 		<FormContainer onSubmit={submit}>
-            <StyledH1>Create Employee</StyledH1>
+            <h1>Create Employee</h1>
             <div>
                 <StyledLabel>First Name
                     <input 

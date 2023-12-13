@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import Form from '../components/Form'
-import { Modal } from 'modal-hrnet-wh'
-import 'modal-hrnet-wh/dist/index.css'
+import { Modal } from 'react-modal-wh'
+import 'react-modal-wh/dist/index.css'
 
 const CreateContainer = styled.div`
     display: flex;

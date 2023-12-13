@@ -10,6 +10,9 @@
 
 h1 {
     font-size: 1.5em;
+    margin: 5vh auto;
+    text-align: center;
+    color: #93AD18;
 }
 
 input[type="submit"] {

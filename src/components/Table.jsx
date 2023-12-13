@@ -17,12 +17,7 @@ const TableContainer = styled.div`
       width: 80vw;
     }
 `
-const StyledH1 = styled.h1`
-	margin: 0 auto;
-    padding: 2vw 4vw;
-    text-align: center;
-    color: #93AD18;
-`
+
 const StyledDiv = styled.div`
     height: fit-content;	
     margin: 2vw; 
@@ -64,7 +59,7 @@ export default function Table() {
 
   return (
       <TableContainer>
-          <StyledH1>Current Employees</StyledH1>
+          <h1>Current Employees</h1>
           <StyledDiv>
           <MaterialReactTable table={table} />
           </StyledDiv>
